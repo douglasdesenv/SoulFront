@@ -1,4 +1,4 @@
-SoulFront is a JavaScript Component Library.
+<h1>SoulFront is a JavaScript Component Library.</h1>
 
 The objective of this project is:
 
