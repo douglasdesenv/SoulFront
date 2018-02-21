@@ -15,8 +15,8 @@
 
 <h3>Component index:</h3>
 
-<ul>
-  <ol>Tootip</ol>
-  <ol>Carousel</ol>
-  <ol>Image Zoom</ol>
-</ul>
+<ol>
+  <li>Tootip</li>
+  <li>Carousel</li>
+  <li>Image Zoom</li>
+</ol>
