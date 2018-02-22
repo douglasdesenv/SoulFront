@@ -1,14 +1,14 @@
 <h1>SoulFront is a JavaScript component library.</h1>
 
-<h3>The objective of this project is:</h3>
+<h3>The objective of this project are:</h3>
 
-- I improve my development skills with Javascript and jQuery;
+- Improve my development skills with Javascript and jQuery;
 - Create a repository with basic interface elements for quick reference.
 
 <h3>The development proposal:</h3>
 
 - Create simple and organized codes;
-- Improve codes whenever I learn better ways of doing it;
+- Update the code whenever I discovery a way to improve it.
 - Encode using the most current versions of ECMAScript;
 - Create components with basic functionality, always emphasizing the easy understanding of the code.
 - Develop original codes and unrelated to other components, libraries or frameworks (except the jQuery library).
