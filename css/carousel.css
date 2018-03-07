@@ -1,0 +1,71 @@
+/* Estilos específicos da página */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+body{padding:20px;}
+
+.vitrine-1{
+    width: 650px;
+    height: 250px;
+}
+
+/* Estilos padrões do componente Carousel */
+
+.carousel{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.carousel .wrap-carousel{position: absolute;}
+.carousel .slide{position: absolute; z-index:0;}
+.carousel .slide.active{z-index:1; left:0}
+
+.carousel .btn-arrow-left, .carousel .btn-arrow-right{
+    width: 30px;
+    height: 60px;
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel .btn-arrow-right{right: 0}
+
+.carousel .btn-arrow-left:before, .carousel .btn-arrow-right:before{
+    content: '‹';
+    font-size: 2.4em;
+    height: 52px;
+    color: #fff;
+}
+
+.carousel .btn-arrow-right:before{content: '›'}
+
+.carousel .nav-bar{
+    position: absolute;
+    padding: 4px 8px;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.carousel .btn-slide-carousel{
+    padding: 7px;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 20px;
+    float: left;
+    margin: 3px;
+    cursor: pointer;
+}
