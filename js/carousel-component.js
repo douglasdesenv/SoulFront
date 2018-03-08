@@ -1,11 +1,12 @@
 ﻿(function(){
-    
+    'use strict'
+
     $(document).ready(function() {
         $('[data-carousel]').each(criarCarousel);
     });
 
     function criarCarousel(){
-        var el = $(this),
+        const el = $(this),
         slide = el.find('.slide');
 
         slide.first().addClass('active');
@@ -17,7 +18,7 @@
     }
 
     function autoPlay(el) {
-        var autoplay = 0;
+        let autoplay = 0;
 
         if (el.data('carousel') > 0) {
             autoplay = el.data('carousel');
@@ -35,7 +36,7 @@
             slide.each(function(i) {
                 el.find('.nav-bar').append('<div class="btn-slide-carousel"></div>');
                 el.find('.btn-slide-carousel').eq(i).on("click", function() {
-                    var index = i - el.find('.slide.active').index();
+                    const index = i - el.find('.slide.active').index();
                     navProximo(el, index);
                 });
             });
@@ -55,10 +56,10 @@
     }
 
     function navProximo(el, index) {
-        var cWrap = el.find('.wrap-carousel'),
+        const cWrap = el.find('.wrap-carousel'),
             slide = el.find('.slide'),
-            iAtivo = el.find('.slide.active').index(),
-            iAlvo = iAtivo + index,
+            iAtivo = el.find('.slide.active').index();
+        let iAlvo = iAtivo + index,
             sWidth = el.width(),
             wWrap = 0,
             j = 0;
@@ -77,7 +78,7 @@
                 cWrap.css('left', index * sWidth);
             }
 
-            for (i = 0; i <= Math.abs(index); i++) {
+            for (let i = 0; i <= Math.abs(index); i++) {
                 slide.eq(j).css({ 'left': sWidth * i, 'z-index': 1 });
                 if (iAlvo <= slide.last().index()) {
                     j++;

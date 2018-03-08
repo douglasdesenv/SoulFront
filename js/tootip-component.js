@@ -1,4 +1,5 @@
 (function(){
+	'use strict'
 
 	$(document).ready(function() {
 		$(window).scroll(function() {
@@ -9,7 +10,7 @@
 	});
 
 	function tootip(){
-		var el = $(this);
+		const el = $(this),
 			direction = el.data('tootip-direction'),
 			position = el.data('tootip-position'),
 			text = el.data('tootip-text'),
@@ -18,7 +19,7 @@
 		if (dataText != undefined) {
 			
 			el.after('<div class="tootip">' + dataText + '</div>');
-			var tp = $('.tootip');
+			const tp = $('.tootip');
 			tp.hide().fadeIn();
 			el.removeAttr('title');
 			
@@ -33,7 +34,7 @@
 	}
 
 	function tootipText(el, text){
-		var dataText;
+		let dataText;
 		if (text != undefined){
 			dataText = text;
 		} else{
@@ -73,15 +74,16 @@
 				case 'end':
 					tp.css('left', el.offset().left + el.outerWidth() - (tp.outerWidth()/2));
 					break;
-				default:     
+				default:
+				tp.css('left', el.offset().left + (el.outerWidth()/2) - (tp.outerWidth()/2));     
 			}
 		} else {
-			var tpH = el.offset().top - $(window).scrollTop();
+			const tpH = el.offset().top - $(window).scrollTop();
 			switch(position) {
 				case 'start':
 					tp.css('top', tpH);
 					break;
-				case 'center':
+				case 'middle':
 					tp.css('top', tpH + (el.outerHeight()/2) - (tp.outerHeight()/2));
 					break;
 				default:

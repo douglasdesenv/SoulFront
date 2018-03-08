@@ -9,7 +9,11 @@
     border-radius: 0;
 }
 
-body{padding:20px;}
+body{
+    padding:50px; 
+    display: flex;
+    justify-content: center;
+}
 
 .vitrine-1{
     width: 650px;
@@ -46,6 +50,7 @@ body{padding:20px;}
 
 .carousel .btn-arrow-left:before, .carousel .btn-arrow-right:before{
     content: '‹';
+    font-family: sans-serif;
     font-size: 2.4em;
     height: 52px;
     color: #fff;

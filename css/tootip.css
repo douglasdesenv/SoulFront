@@ -1,0 +1,95 @@
+/* Estilos específicos da página */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    padding:50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-example{
+    font-size: 1em;
+    color: blueviolet;
+    margin: 20px;
+}
+
+.div-example{
+    width: 150px;
+    height: 150px;
+    background-color: blueviolet;
+    margin: 20px;
+}
+
+.img-example{
+    margin: 20px;
+}
+
+.input-example{
+    border: 1px solid blueviolet;
+    margin: 20px;
+    height: 30px;
+    padding: 5px;
+    width: 150px;
+}
+
+/* Estilos padrões do componente Carousel */
+
+.tootip{
+	position: fixed;
+	border-radius: 5px;
+	padding: 8px 10px;
+	background-color: rgba(0,0,0,0.8);
+	color: #fff;
+	z-index: 501;
+	font-size: 12px;
+	text-align: center;
+	max-width: 160px;
+}
+
+.tootip:after{
+	content: "";
+    border: 8px solid transparent;
+    position: absolute;
+}
+
+.tip-top:after { 
+  border-bottom: 8px solid rgba(0,0,0,0.8); 
+  border-top: 0;
+  left: 50%;
+  margin-left: -8px;
+  top: -8px;
+}
+
+.tip-bottom:after { 
+  border-top: 8px solid rgba(0,0,0,0.8); 
+  border-bottom: 0;
+  left: 50%;
+  margin-left: -8px;
+  bottom: -8px;
+}
+
+.tip-left:after { 
+	border-right: 8px solid rgba(0,0,0,0.8); 
+	border-left: 0;
+	top: 50%;
+	margin-top: -8px;
+	left: -8px;
+}
+
+.tip-right:after { 
+	border-left: 8px solid rgba(0,0,0,0.8);
+    border-right: 0;
+    top: 50%;
+    margin-top: -8px;
+    right: -8px;
+}
