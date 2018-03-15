@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Table - SoulFront</title>
+    <link rel="stylesheet" href="css/table.css">
+</head>
+<body>
+    <h2>Resultado da Cãopetição</h2>
+    <table data-table-filter="true">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nome</th>
+                <th>Inscrição</th>
+                <th>Grupo</th>
+                <th>Raça</th>
+                <th>Porte</th>
+                <th>País de origem</th>
+                <th>Colocação</th>
+                <th>Prêmio</th>
+            </tr>
+            <tr class="filter-row">
+                <th></th>
+                <th><input type="text"></th>
+                <th><input type="text"></th>
+                <th>
+                    <select>
+                        <option value="Todos">Todos</option>
+                    </select>
+                </th>
+                <th>
+                    <select>
+                        <option value="Todos">Todos</option>
+                    </select>
+                </th>
+                <th>
+                    <select>
+                        <option value="Todos">Todos</option>
+                    </select>
+                </th>
+                <th>
+                    <div class="checkbox-group">
+                        <input type="text">
+                        <div class="checkbox-list">
+                        </div>
+                    </div>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Lucky</td>
+                <td>85547</td>
+                <td>Esportista</td>
+                <td>Labrador</td>
+                <td>Grande</td>
+                <td>Canadá</td>
+                <td>7º</td>
+                <td>3500,00</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Fred</td>
+                <td>18547</td>
+                <td>Caçador</td>
+                <td>Beagle</td>
+                <td>Pequeno</td>
+                <td>Inglaterra</td>
+                <td>38º</td>
+                <td>500,00</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Amora</td>
+                <td>87956</td>
+                <td>Esportista</td>
+                <td>Golden Retriever</td>
+                <td>Grande</td>
+                <td>Inglaterra</td>
+                <td>12º</td>
+                <td>2500,00</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Will</td>
+                <td>56889</td>
+                <td>Trabalhador</td>
+                <td>Boxer</td>
+                <td>Médio</td>
+                <td>Alemanha</td>
+                <td>22º</td>
+                <td>1500,00</td>
+            </tr>
+        </tbody>
+    </table>  
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/table-component.js"></script>
+</body>
+</html>

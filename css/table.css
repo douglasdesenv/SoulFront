@@ -1,0 +1,41 @@
+/* Estilos específicos da página */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    padding:50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2{
+    margin-bottom: 30px;
+    color: blueviolet;
+}
+
+table, td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+th {
+    border-right: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 2px 5px;
+}
+
+table th{
+    background-color: #eee;
+    color: #444;
+}
