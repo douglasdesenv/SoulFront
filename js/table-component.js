@@ -9,31 +9,29 @@
         const tabela = $(this),
         rowFiltros = tabela.find('.filter-row th');
     
-        rowFiltros.each(function(){
+        rowFiltros.each(function(i){
             const colFiltro = $(this),
                    inputText = colFiltro.children('input[type="text"]'),
-                   select = colFiltro.children('input[type="text"]'),
-                   checkboxGroup = colFiltro.children('input[type="text"]');
+                   select = colFiltro.children('select'),
+                   checkboxGroup = colFiltro.children('.checkbox-group');
 
             if (colFiltro.html() !== ""){
                 if (inputText.length > 0){
-                    colFiltro.on('keyup', filtrar);
-                    //console.log(colFiltro.parent().children().index());
+                    inputText.on('keyup', filtrar);
                 };
                 if (select.length > 0){
                     select.on('change', filtrar);
-                    // tabela.find('tbody tr').each(function(){
-                    //     const dado = $(this).children('td').eq(select.parent()[0].cellIndex).text();
-                    //     select.append("<option value='" + dado + "'>" + dado + "</option>");
-                    // })
                     
-                    // select.map(function(){
-                    //     const txtColuna = $(this).children('td').eq(select.parent()[0].cellIndex).text();
-                        
-                    //     if (select.find(':contains(' + txtColuna + ')').length === 0){
-                    //         select.append("<span class='filtro-situacao'><input id='id"+ txtColuna +"' type='checkbox'><label for='id"+ txtColuna +"'>"+ txtColuna +"</label></span>");
-                    //     }   
-                    // });
+                    let colIndex = i+1;
+                    const tdsColuna = tabela.find('tbody td:nth-child('+ colIndex +')');
+
+                    let textosColuna = tdsColuna.map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    $.unique(textosColuna).map(function(el){
+                        select.append("<option value='" + el + "'>" + el + "</option>");
+                    });
 
                 };
                 if (checkboxGroup.length > 0){
@@ -43,9 +41,21 @@
         });
         
     };
-
+    
     function filtrar(){
-        console.log('filtrando!');
+        const el = $(this);
+
+        if (el.prop('tagName') == "INPUT"){
+            console.log('é input')
+        };
+        if (el.prop('tagName') == "SELECT"){
+            console.log(el)
+            const opcaoFiltro = el.val();
+            
+        };
+        if (el.hasClass('checkbox-group')){
+            console.log('é checkbox-group')
+        };
     }
 
 })();
