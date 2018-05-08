@@ -47,3 +47,36 @@ input[type="text"], select{
     margin-bottom: 2px;
     padding: 2px;
 }
+
+/* Estilos padrões do componente table */
+
+.checkbox-group{
+    height: 24px;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    margin-bottom: 2px;
+    padding: 2px;
+    -webkit-appearance: menulist-button;  
+   -moz-appearance: menulist-button;
+   appearance: menulist-button; 
+}
+
+.checkbox-list{
+    padding: 8px 20px 8px 8px;
+    background-color: #fff;
+    display: none;
+    grid-template-columns: auto auto;
+    text-align: left;
+    position: absolute;
+    align-items: center;
+    top: 22px;
+    border: 1px solid #7b9dd4;
+    font-weight: normal;
+    font-family: arial;
+    font-size: 13.33px;
+    color: #000;
+}
+
+.checkbox-list label{padding: 4px;}

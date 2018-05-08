@@ -35,13 +35,37 @@
 
                 };
                 if (checkboxGroup.length > 0){
-                    //console.log(colFiltro.parent().children().index());
+                    
+                    checkboxGroup.each(function(){
+                        $(this).on('click', function(){
+                            if (checkboxList.is(':hidden')) {
+                                checkboxList.css('display','grid');  
+                            } else {
+                                checkboxList.hide();
+                            }
+                        });
+
+                        const checkboxList = $(this).children('.checkbox-list');
+
+                        let colIndex1 = i+1;
+                        const tdsColuna1 = tabela.find('tbody td:nth-child('+ colIndex1 +')');
+                        
+                        let textosColuna1 = tdsColuna1.map(function(){
+                            return $(this).text();
+                        }).get();
+
+                        $.unique(textosColuna1).map(function(el){
+                            checkboxList.append('<input id="id'+ el +'" type="checkbox"><label for="id'+ el + '">' + el + '</label>');
+                        });
+  
+                    })
                 };
             }
         });
         
     };
     
+
     function filtrar(){
         const el = $(this);
 
