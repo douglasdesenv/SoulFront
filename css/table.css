@@ -64,7 +64,7 @@ input[type="text"], select{
 }
 
 .checkbox-list{
-    padding: 8px 20px 8px 8px;
+    padding: 4px 20px 4px 8px;
     background-color: #fff;
     display: none;
     grid-template-columns: auto auto;
