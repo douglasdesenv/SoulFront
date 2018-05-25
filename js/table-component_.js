@@ -112,4 +112,3 @@ function atualizaGrid(){
         $('tfoot').hide();
     }
 }
-//alterado
