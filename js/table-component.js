@@ -2,107 +2,99 @@
     'use strict';
 
     $(document).ready(function(){
-        $('[data-table-filter]').each(criaFiltros);
-        atualizarGrid();
+        $('[data-table-filter]').each(criarFiltros);
+        criarIndice();
+        criarTotal();
     });
 
-    function criaFiltros(){
+    function criarFiltros(){
         const tabela = $(this),
-        rowFiltros = tabela.find('.filter-row th');
+        rowFiltros = tabela.find('.filter-row th').children(':not(.filtered)');
     
-        rowFiltros.each(function(i){
-            const colFiltro = $(this),
-                   inputText = colFiltro.children('input[type="text"]'),
-                   select = colFiltro.children('select'),
-                   checkboxGroup = colFiltro.children('.checkbox-group');
+        rowFiltros.each(function(){
+            const filtro = $(this);
+    
+            if (filtro.prop('type') == 'text'){
+                filtro.on('keyup', verificarFiltros);
+            } else{
 
-            if (colFiltro.html() !== ""){
-                let cIndex = i+1;
-                const filtro = {
-                    nome : tabela, 
-                    coluna : tabela.find('tbody td:nth-child('+ cIndex +')')
+                let textosColuna = localizarCol(filtro).map(function(){
+                    return $(this).text();
+                }).get();
+
+                if (filtro.prop('type') == 'select-one'){
+                    
+                    filtro.on('change', verificarFiltros);
+                    filtro.empty().append("<option value='Todos'>Todos</option>");
+                    
+                    $.unique(textosColuna).map(function(el){
+                        filtro.append("<option value='" + el + "'>" + el + "</option>");
+                    });
+
+                } else {
+                    if (filtro.hasClass('checkbox-group')){                                
+                       
+                            const checkboxList = filtro.children('.checkbox-list');
+                            
+                            filtro.on('click', function(){
+                                if (checkboxList.is(':hidden')) {
+                                    checkboxList.css('display','grid');  
+                                } else {
+                                    checkboxList.hide();
+                                }
+                            });
+
+                            checkboxList.empty();
+
+                            $.unique(localizarCol(filtro)).map(function(){
+                                checkboxList.append('<input id="id'+ $(this).text() +'" type="checkbox"><label for="id'+ $(this).text() + '">' + $(this).text() + '</label>');
+                            });
+                            checkboxList.on('change', verificarFiltros);
+                    };
                 }
-                
-                if (inputText.length > 0){
-                    inputText.on('keyup', filtro, verificarFiltros);
-                } else{
-
-                    let textosColuna = filtro.coluna.map(function(){
-                        return $(this).text();
-                    }).get();
-
-                    if (select.length > 0){
-                        select.on('change', filtro, verificarFiltros);
-                        
-                        $.unique(textosColuna).map(function(el){
-                            select.append("<option value='" + el + "'>" + el + "</option>");
-                        });
-
-                    } else {
-                        if (checkboxGroup.length > 0){                                
-                            checkboxGroup.each(function(){
-                                const checkboxList = $(this).children('.checkbox-list');
-                                
-                                $(this).on('click', function(){
-                                    if (checkboxList.is(':hidden')) {
-                                        checkboxList.css('display','grid');  
-                                    } else {
-                                        checkboxList.hide();
-                                    }
-                                });
-    
-                                $.unique(textosColuna).map(function(el){
-                                    checkboxList.append('<input id="id'+ el +'" type="checkbox"><label for="id'+ el + '">' + el + '</label>');
-                                });
-                                checkboxList.on('change', filtro, verificarFiltros);
-                            })
-                        };
-                    }
-                }          
-            }
+            }          
         });
     };   
 
-    function verificarFiltros(filtro){
-        const el = $(this),
-        tbl = filtro.data.nome,
-        col = filtro.data.coluna;
+    function verificarFiltros(){
+        const filtro = $(this),
+        tabela = filtro.closest('table');
 
-        tbl.children('tbody').children('tr').show();
+        tabela.children('tbody').children('tr').show();
 
-        if ((el.prop('type') == 'select-one' && el.children('option:selected').index() != 0)
-        || (el.hasClass('checkbox-list') && el.find('input[type="checkbox"]:checked').length > 0)
-        || (el.prop('type') == 'text' && el.val() !== '')) {
-            el.addClass('filtered');
+        if ((filtro.prop('type') == 'select-one' && filtro.children('option:selected').index() != 0)
+        || (filtro.hasClass('checkbox-list') && filtro.find('input[type="checkbox"]:checked').length > 0)
+        || (filtro.prop('type') == 'text' && filtro.val() !== '')) {
+            filtro.addClass('filtered');
         } else {
-            el.removeClass('filtered');
+            filtro.removeClass('filtered');
         }
      
-        filtrar();     
+        filtrar(tabela);     
     }
 
-    function filtrar(){
+    function filtrar(tabela){
 
         $('.filtered').each(function(){
-            const el = $(this);
+            const filtro = $(this);
             let filtros = '';
-            if (el.hasClass('checkbox-list')){
-                el.find('input[type="checkbox"]:checked').each(function(){
+            if (filtro.hasClass('checkbox-list')){
+                filtro.find('input[type="checkbox"]:checked').each(function(){
                     filtros +=  ':not(:contains("' + this.nextSibling.innerText + '"))';
                 });
             } else {
-                filtros =  ':not(:contains(' + el.val() + '))';  
+                filtros =  ':not(:contains(' + filtro.val() + '))';  
             }
-            localizarCol(el).filter(filtros).parent('tr').hide();
+            localizarCol(filtro).filter(filtros).parent('tr').hide();
         });
 
-        criaFiltros();
-        atualizarGrid();
+        tabela.each(criarFiltros);
+        criarIndice();
+        criarTotal();
     }
 
-    function atualizarGrid(){
-        const   colIndex = $('[data-table-col="index"]'),
-                colTotal = $('[data-table-col="total"]');
+    function criarIndice(){
+        const   colIndex = $('[data-table-col="index"]');
         let     i = 1;
         
         if (colIndex.length > 0){
@@ -110,6 +102,10 @@
                 $(this).text(i++);
             });
         };
+    }
+
+    function criarTotal(){
+        const   colTotal = $('[data-table-col="total"]');
 
         if (colTotal.length > 0){
             let total = 0;
@@ -117,10 +113,8 @@
                 localizarCol($(this)).each(function(){
                     total = total + parseFloat($(this).text().replace(",", "."));
                 });
-
+                $(this).closest('table').find('tfoot td:nth-child('+ (this.cellIndex + 1) +')').text(total.toFixed(2).replace(".", ","));
             });
-            console.log(total.toFixed(2).replace(".", ","));
-            //$('.' + this[0].className + '-total').text(j.toFixed(2).replace(".", ","));
         };
     }
 

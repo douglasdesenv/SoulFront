@@ -35,7 +35,7 @@ th {
     padding: 4px 10px;
 }
 
-table th{
+table th, table tfoot td{
     background-color: #eee;
     color: #444;
 }
