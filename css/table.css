@@ -51,12 +51,14 @@ input[type="text"], select{
 /* Estilos padrões do componente table */
 
 .checkbox-group{
+    position: relative;
+}
+
+.select-style{
     height: 24px;
     border: 1px solid #ccc;
     width: 100%;
     background-color: #fff;
-    position: relative;
-    margin-bottom: 2px;
     padding: 2px;
     -webkit-appearance: menulist-button;  
    -moz-appearance: menulist-button;
@@ -71,7 +73,7 @@ input[type="text"], select{
     text-align: left;
     position: absolute;
     align-items: center;
-    top: 22px;
+    top: 23px;
     border: 1px solid #7b9dd4;
     font-weight: normal;
     font-family: arial;

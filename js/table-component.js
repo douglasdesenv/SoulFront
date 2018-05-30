@@ -9,25 +9,25 @@
 
     function criarFiltros(){
         const tabela = $(this),
-        rowFiltros = tabela.find('.filter-row th').children(':not(.filtered)');
+        filtros = tabela.find('.filter-row th').children(':not(.filtered)');
     
-        rowFiltros.each(function(){
+        filtros.each(function(){
             const filtro = $(this);
     
             if (filtro.prop('type') == 'text'){
-                filtro.on('keyup', verificarFiltros);
+                filtro.off().on('keyup', verificarFiltros);
             } else{
 
-                let textosColuna = localizarCol(filtro).map(function(){
+                let textosColuna = $.unique(localizarCol(filtro).map(function(){
                     return $(this).text();
-                }).get();
+                })).get();
 
                 if (filtro.prop('type') == 'select-one'){
                     
-                    filtro.on('change', verificarFiltros);
+                    filtro.off().on('change', verificarFiltros);
                     filtro.empty().append("<option value='Todos'>Todos</option>");
                     
-                    $.unique(textosColuna).map(function(el){
+                    textosColuna.map(function(el){
                         filtro.append("<option value='" + el + "'>" + el + "</option>");
                     });
 
@@ -36,7 +36,7 @@
                        
                             const checkboxList = filtro.children('.checkbox-list');
                             
-                            filtro.on('click', function(){
+                            $('.select-style').off('click').on('click', function(){
                                 if (checkboxList.is(':hidden')) {
                                     checkboxList.css('display','grid');  
                                 } else {
@@ -44,12 +44,13 @@
                                 }
                             });
 
-                            checkboxList.empty();
+                           checkboxList.parent(':not(.filtered)').children(checkboxList).empty();
 
-                            $.unique(localizarCol(filtro)).map(function(){
-                                checkboxList.append('<input id="id'+ $(this).text() +'" type="checkbox"><label for="id'+ $(this).text() + '">' + $(this).text() + '</label>');
+                            textosColuna.map(function(el){
+                                checkboxList.append('<input id="id'+ el +'" type="checkbox"><label for="id'+ el + '">' + el + '</label>');
                             });
-                            checkboxList.on('change', verificarFiltros);
+
+                            checkboxList.off().on('change', verificarFiltros);
                     };
                 }
             }          
@@ -62,14 +63,22 @@
 
         tabela.children('tbody').children('tr').show();
 
-        if ((filtro.prop('type') == 'select-one' && filtro.children('option:selected').index() != 0)
-        || (filtro.hasClass('checkbox-list') && filtro.find('input[type="checkbox"]:checked').length > 0)
-        || (filtro.prop('type') == 'text' && filtro.val() !== '')) {
-            filtro.addClass('filtered');
-        } else {
-            filtro.removeClass('filtered');
+        if(filtro.prop('type') == 'select-one' || filtro.prop('type') == 'text'){
+            if(filtro.children('option:selected').index() != 0 || (filtro.prop('type') == 'text' && filtro.val() !== '')){
+                filtro.addClass('filtered');
+            } else{
+                filtro.removeClass('filtered');
+            }
+        } else{
+            if (filtro.parent().hasClass('checkbox-group')){
+                if(filtro.find('input[type="checkbox"]:checked').length > 0){
+                    filtro.parent().addClass('filtered');
+                } else{
+                    filtro.removeClass('filtered');
+                }
+            } 
         }
-     
+
         filtrar(tabela);     
     }
 
@@ -78,7 +87,7 @@
         $('.filtered').each(function(){
             const filtro = $(this);
             let filtros = '';
-            if (filtro.hasClass('checkbox-list')){
+            if (filtro.children('.checkbox-list').length > 0){
                 filtro.find('input[type="checkbox"]:checked').each(function(){
                     filtros +=  ':not(:contains("' + this.nextSibling.innerText + '"))';
                 });
