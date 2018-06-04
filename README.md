@@ -19,4 +19,5 @@
   <li>Tootip</li>
   <li>Carousel</li>
   <li>Image Zoom</li>
+  <li>Table</li>
 </ol>
