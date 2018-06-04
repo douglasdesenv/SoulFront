@@ -36,9 +36,14 @@
                        
                             const checkboxList = filtro.children('.checkbox-list');
                             
-                            $('.select-style').off('click').on('click', function(){
+                            $('.select-style').off('click').on('click', function(e){
                                 if (checkboxList.is(':hidden')) {
-                                    checkboxList.css('display','grid');  
+                                    checkboxList.css('display','grid');
+                                    $(document).off('click').on('click', function(e){
+                                        if ((checkboxList.is(':visible')) && ($(e.target).parent() != '.checkbox-group')) {
+                                            checkboxList.hide();
+                                        }
+                                    });
                                 } else {
                                     checkboxList.hide();
                                 }
@@ -74,7 +79,7 @@
                 if(filtro.find('input[type="checkbox"]:checked').length > 0){
                     filtro.parent().addClass('filtered');
                 } else{
-                    filtro.removeClass('filtered');
+                    filtro.parent().removeClass('filtered');
                 }
             } 
         }
