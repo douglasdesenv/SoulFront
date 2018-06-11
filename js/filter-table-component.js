@@ -2,10 +2,14 @@
     'use strict';
 
     $(document).ready(function(){
+        carregaFiltro();
+    });
+
+    function carregaFiltro(){
         $('[data-table-filter]').each(criarFiltros);
         criarIndice();
         criarTotal();
-    });
+    }
 
     function criarFiltros(){
         const tabela = $(this),

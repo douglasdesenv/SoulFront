@@ -2,12 +2,16 @@
 	'use strict'
 
 	$(document).ready(function() {
+		carregaTootip();
+	});
+
+	function carregaTootip(){
+		$('[data-tootip-direction]').on('mouseover', tootip);
+		
 		$(window).scroll(function() {
 			fecharTootip();
 		});
-
-		$('[data-tootip-direction]').on('mouseover', tootip);
-	});
+	}
 
 	function tootip(){
 		const el = $(this),

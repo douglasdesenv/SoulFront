@@ -1,11 +1,15 @@
 (function(){	
 	
 	$(document).ready(function() {
+		carregaZoom();
+	});
+
+	function carregaZoom(){
 		$('[data-zoom]').on('mouseenter touchstart', imgZoom);
 		$('[data-zoom-gallery]').children('img').on('click', zoomGallery);
 		criarWrap();
 		criarTag();
-	});
+	}
 
 	function criarWrap(){
 		var el = $('[data-zoom]');

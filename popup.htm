@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popup - SoulFront</title>
+    <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+    
+    <a href="" class="btn-open-popup" data-popup=".about-dog">This button is a link</a>
+    <div class="btn-open-popup" data-popup="#about-dog">This button is a div</div>
+
+    <div class="popup about-dog">
+        <div class="popup-header">
+            <h2>Get Moving!</h2>
+            <div class="popup-close" data-popup-close></div>
+        </div>
+        <div class="popup-content">
+            <img src="img/example2.jpg">
+            <p>Before starting any new exercise program with your dog, have a chat with your veterinarian. 
+                You'll want to make sure your dog is healthy enough to safely increase his physical activity. 
+                This is especially true for mature dogs, but even young dogs should get a go-ahead from a vet.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="" styleClass="btn-primary icon-check">Ok</a>
+        </div>
+    </div>
+
+    <div id="about-dog" class="popup">
+        <div class="popup-header">
+            <h2>Let's play!</h2>
+            <div class="popup-close" data-popup-close></div>
+        </div>
+        <div class="popup-content">
+            <img src="img/example3.jpg">
+            <p>There is a growing acceptance among scientists that play is very, 
+                very important and the type and frequency of play are a really good 
+                indicator of a dog’s quality of life.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="" styleClass="btn-primary icon-check">Ok</a>
+        </div>
+    </div>
+
+    <div id="mask"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/popup-component.js"></script>
+</body>
+</html>

@@ -2,8 +2,12 @@
     'use strict'
 
     $(document).ready(function() {
-        $('[data-carousel]').each(criarCarousel);
+        carregaCarousel();
     });
+
+    function carregaCarousel(){
+        $('[data-carousel]').each(criarCarousel);
+    }
 
     function criarCarousel(){
         const el = $(this),
