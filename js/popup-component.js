@@ -2,11 +2,15 @@
     'use strict';
 
     $(document).ready(function(){
+        carregaPopup();
+    });
+
+    function carregaPopup(){
         $('[data-popup]').each(criarPopups);
         $('[data-popup-close]').each(function(){
             $(this).on('click', fecharPopup);
         });
-    });
+    }
     
     function criarPopups(){
         $(this).off('click').on('click', function(e) { 
@@ -16,25 +20,23 @@
     }
 
     function abrirPopup(target){
-        $(target).show();
+        $(target).fadeIn('fast');
         abrirMascara();
     }
     
+    function abrirMascara(){
+        $('#mask').fadeIn('fast').off('click').on('click', fecharPopup);
+        $('body').css('overflow-y','hidden');
+    }
+
     function fecharPopup(){
         $('.popup').hide();
         fecharMascara();
     }
     
-    function abrirMascara(){
-        $('#mask').show().css('top', 0);
-        $('#mask').off('click').on('click', fecharPopup);
-        $('body').css('overflow-y','hidden');
-    }
-    
     function fecharMascara(){
-        $('#mask').hide();
+        $('#mask').fadeOut('fast');
         $('body').css('overflow-y','auto');
     }
          
 })();
-
