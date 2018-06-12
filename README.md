@@ -18,6 +18,6 @@
 <ol>
   <li>Tootip</li>
   <li>Carousel</li>
-  <li>Image Zoom</li>
-  <li>Table</li>
+  <li>Popup</li>
+  <li>Filter Table</li>
 </ol>
