@@ -44,7 +44,7 @@
                                 if (checkboxList.is(':hidden')) {
                                     checkboxList.css('display','grid');
                                     $(document).off('click').on('click', function(e){
-                                        if ((checkboxList.is(':visible')) && ($(e.target).parent() != '.checkbox-group')) {
+                                        if ((checkboxList.is(':visible')) && ($(e.target).closest('.checkbox-group').length == 0)) {
                                             checkboxList.hide();
                                         }
                                     });
