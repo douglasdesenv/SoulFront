@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="css/popup.css">
 </head>
 <body>
+    <div id="mask"></div>
     
     <a href="" class="btn-open-popup" data-popup=".about-dog">This button is a link</a>
     <div class="btn-open-popup" data-popup="#about-dog">This button is a div</div> 
-
-<p></p>
 
     <div class="popup about-dog">
         <div class="popup-header">
@@ -24,9 +23,9 @@
             <p>Before starting any new exercise program with your dog, have a chat with your veterinarian. 
                 You'll want to make sure your dog is healthy enough to safely increase his physical activity. 
                 This is especially true for mature dogs, but even young dogs should get a go-ahead from a vet.</p>
-        </div>
-        <div class="popup-footer">
-            <button type="button" class="btn-example icon-check" data-popup-close>OK</button>
+            <div class="btn-content">
+                <button type="button" class="btn-example icon-check" data-popup-close>OK</button>
+            </div>
         </div>
     </div>
 
@@ -40,13 +39,12 @@
             <p>There is a growing acceptance among scientists that play is very, 
                 very important and the type and frequency of play are a really good 
                 indicator of a dog’s quality of life.</p>
-        </div>
-        <div class="popup-footer">
-            <button type="button" class="btn-example icon-check" data-popup-close>OK</button>
+            <div class="btn-content">
+                <button type="button" class="btn-example icon-check" data-popup-close>OK</button>
+            </div>
         </div>
     </div>
 
-    <div id="mask"></div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/popup-component.js"></script>
 </body>

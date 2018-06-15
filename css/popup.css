@@ -17,6 +17,8 @@ body{
     align-items: center;
 }
 
+img{width: inherit}
+
 .btn-open-popup{
     background-color: blueviolet;
     padding: 8px 15px;
@@ -41,6 +43,12 @@ body{
     color: #fff;
 }
 
+.btn-content{
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+}
+
 .btn-example:hover{
     background-color: #444;
     transition: all .5s;
@@ -57,15 +65,17 @@ body{
 	top:50%;
 	left: 50%;
 	flex-direction: column;
-	transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
     max-width: 480px;
+    width: 90%;
+    max-height: 80%;
 }
 
 .popup-header{
 	display: flex;
 	width: 100%;
     background-color: #e6e8ea;
-    height: 40px;
+    min-height: 40px;
     font-size: 1.1em;
     border-radius: 3px 3px 0 0;
 }
@@ -82,13 +92,9 @@ body{
 .popup-content{
     float: left;
     width: 100%;
-    padding: 30px;
-}
-
-.popup-footer{
-    float: left;
-    width: 100%;
-    padding: 0 30px 30px;
+    padding: 25px;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .popup-close{
@@ -121,6 +127,5 @@ body{
     top: 0;
     display: none;
     background-color: rgba(0,0,0,0.75); 
-	z-index: 998;
-    
+	z-index: 998; 
 }

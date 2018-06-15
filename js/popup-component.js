@@ -20,7 +20,7 @@
     }
 
     function abrirPopup(target){
-        $(target).fadeIn('fast');
+        $(target).css('display', 'flex').fadeIn('fast');
         abrirMascara();
     }
     
