@@ -5,11 +5,14 @@
         carregaPopup();
     });
 
-    function carregaPopup(){
-        $('[data-popup]').each(criarPopups);
-        $('[data-popup-close]').each(function(){
-            $(this).on('click', fecharPopup);
-        });
+    function carregaPopup(){   
+        if ($('[data-popup]').length > 0){
+            $('body').prepend('<div id="mask"></div>');
+            $('[data-popup]').each(criarPopups);
+            $('[data-popup-close]').each(function(){
+                $(this).on('click', fecharPopup);
+            });
+        }  
     }
     
     function criarPopups(){
