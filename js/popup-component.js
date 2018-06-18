@@ -6,13 +6,10 @@
     });
 
     function carregaPopup(){   
-        if ($('[data-popup]').length > 0){
-            $('body').prepend('<div id="mask"></div>');
-            $('[data-popup]').each(criarPopups);
-            $('[data-popup-close]').each(function(){
-                $(this).on('click', fecharPopup);
-            });
-        }  
+        $('[data-popup]').each(criarPopups);
+        $('[data-popup-close]').each(function(){
+            $(this).on('click', fecharPopup);
+        });
     }
     
     function criarPopups(){
@@ -28,8 +25,8 @@
     }
     
     function abrirMascara(){
+        $('body').css('overflow-y','hidden').prepend('<div id="mask"></div>');
         $('#mask').fadeIn('fast').off('click').on('click', fecharPopup);
-        $('body').css('overflow-y','hidden');
     }
 
     function fecharPopup(){
@@ -38,7 +35,9 @@
     }
     
     function fecharMascara(){
-        $('#mask').fadeOut('fast');
+        $('#mask').fadeOut('fast', function() { 
+            $(this).remove(); 
+        });
         $('body').css('overflow-y','auto');
     }
          
