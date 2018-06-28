@@ -1,4 +1,4 @@
-(function(){
+(function(modTabela){
     'use strict';
 
     $(document).ready(function(){
@@ -7,8 +7,7 @@
 
     function carregaFiltro(){
         $('[data-table-filter]').each(criarFiltros);
-        criarIndice();
-        criarTotal();
+        modTabela.carregaTabela();
     }
 
     function criarFiltros(){
@@ -22,7 +21,7 @@
                 filtro.off().on('keyup', verificarFiltros);
             } else{
 
-                let textosColuna = $.unique(localizarCol(filtro).map(function(){
+                let textosColuna = $.unique(modTabela.localizarCol(filtro).map(function(){
                     return $(this).text();
                 })).get();
 
@@ -103,45 +102,12 @@
             } else {
                 filtros =  ':not(:contains(' + filtro.val() + '))';  
             }
-            localizarCol(filtro).filter(filtros).parent('tr').hide();
+            modTabela.localizarCol(filtro).filter(filtros).parent('tr').hide();
         });
 
         tabela.each(criarFiltros);
-        criarIndice();
-        criarTotal();
+        modTabela.carregaTabela();
     }
 
-    function criarIndice(){
-        const   colIndex = $('[data-table-col="index"]');
-        let     i = 1;
-        
-        if (colIndex.length > 0){
-            localizarCol(colIndex).each(function(){
-                $(this).text(i++);
-            });
-        };
-    }
-
-    function criarTotal(){
-        const   colTotal = $('[data-table-col="total"]');
-
-        if (colTotal.length > 0){
-            let total = 0;
-            colTotal.each(function(){ 
-                localizarCol($(this)).each(function(){
-                    total = total + parseFloat($(this).text().replace(",", "."));
-                });
-                $(this).closest('table').find('tfoot td:nth-child('+ (this.cellIndex + 1) +')').text(total.toFixed(2).replace(".", ","));
-            });
-        };
-    }
-
-    function localizarCol(el){
-        if (el.not('th')){
-            el = el.closest('th');
-        }
-        return (el.closest('table').find('tbody td:nth-child('+ (el[0].cellIndex + 1) +')').filter(':visible'));
-    }
-
-})();
+})(modTabela);
 

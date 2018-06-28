@@ -1,4 +1,4 @@
-(function(){
+(function(modTabela){
     'use strict';
 
     $(document).ready(function(){
@@ -7,15 +7,16 @@
 
     function carregaOrdenacao(){
         $('[data-table-sort]').each(function(){
-            $(this).append('<div class="icon-sort"></div>').on("click", function() {clicarOrdenacao($(this))});   
+            $(this).append('<div class="icon-sort"><span></span></div>').on("click", function() {clicarOrdenacao($(this))});   
         });
+        modTabela.carregaTabela();
     }
 
     function clicarOrdenacao($this) {
         sinalizarOrdenacao($this);
 
-        const   colPrimaria = $('th[class^="sort-primary"]')[0].cellIndex,
-                colSecundaria = $('th[class^="sort-secondary"]')[0].cellIndex,
+        const   colPrimaria = $('.sort-primary-desc, .sort-primary-asce')[0].cellIndex,
+                colSecundaria = $('.sort-secondary-desc, .sort-secondary-asce')[0].cellIndex,
                 table = $this.closest('table').find('tbody'),
                 linhas = table.find('tr').toArray().sort(ordenar(colPrimaria, colSecundaria, $this));
         
@@ -25,27 +26,8 @@
             table.append(this);
         });
 
-    }
+        modTabela.carregaTabela();
 
-    function ordenar(colPrimaria, colSecundaria, $this) {  
-        console.log($this);
-        return function(a, b) {
-            if (a.children[colPrimaria].innerText === b.children[colPrimaria].innerText) {
-                if(a.children[colSecundaria].innerText === b.children[colSecundaria].innerText) {
-                    return 0;
-                }
-                if ($this.closest('table').find('.sort-secondary-desc').length > 0){
-                    return (a.children[colSecundaria].innerText < b.children[colSecundaria].innerText) ? -1 : 1;
-                } else{
-                    return (a.children[colSecundaria].innerText < b.children[colSecundaria].innerText) ? 1 : -1;
-                }
-            }
-            if ($this.hasClass('sort-primary-desc')){
-                return (a.children[colPrimaria].innerText < b.children[colPrimaria].innerText) ? -1 : 1;
-            } else{
-                return (a.children[colPrimaria].innerText < b.children[colPrimaria].innerText) ? 1 : -1;
-            }
-        }
     }
 
     function sinalizarOrdenacao($this){
@@ -64,5 +46,40 @@
         }
     }
 
-})();
+    function ordenar(colPrimaria, colSecundaria, $this) {  
+        return function(a, b) {
+            let aPrimaria = a.children[colPrimaria].innerText,
+                bPrimaria = b.children[colPrimaria].innerText, 
+                aSecundaria = a.children[colSecundaria].innerText, 
+                bSecundaria = b.children[colSecundaria].innerText;
+
+            if(!isNaN(parseFloat(aPrimaria)) && !isNaN(parseFloat(bPrimaria))){
+                aPrimaria = convert(aPrimaria);
+                bPrimaria = convert(bPrimaria);
+            }
+            if(!isNaN(parseFloat(aSecundaria)) && !isNaN(parseFloat(bSecundaria))){
+                aSecundaria = convert(aSecundaria);
+                bSecundaria = convert(bSecundaria);
+            }
+            if (aPrimaria === bPrimaria) {
+                if(aSecundaria === bSecundaria) {
+                    return 0;
+                }
+                if ($this.closest('table').find('.sort-secondary-desc').length > 0){
+                    return (aSecundaria < bSecundaria) ? -1 : 1;
+                } 
+                return (aSecundaria < bSecundaria) ? 1 : -1;
+            }
+            if ($this.hasClass('sort-primary-desc')){
+                return (aPrimaria < bPrimaria) ? -1 : 1;
+            } 
+            return (aPrimaria < bPrimaria) ? 1 : -1;
+        }
+    }
+
+    function convert(valor){
+        return parseFloat(valor.replace('.', '').replace(',', '.'));
+    }
+    
+})(modTabela);
 

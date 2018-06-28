@@ -36,7 +36,8 @@ td:nth-child(9){text-align: right}
 th {
     border-right: 1px solid #ccc;
     border-collapse: collapse;
-    padding: 4px 10px;
+    padding: 4px 8px;
+    position: relative;
 }
 
 table th, table tfoot td{
@@ -54,15 +55,24 @@ input[type="text"], select{
 
 /* Estilos padrões do componente table */
 
-.icon-sort{
-    width: 8px;
-    height: 2px;
-    margin: 10px 5px 6px;;
-    float: right;
-    position: relative;
+.icon-sort {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 20px;
+    right: 0;
+    top: 0;
 }
 
-.icon-sort:before, .icon-sort:after{
+.icon-sort span {
+    width: 8px;
+    height: 2px;
+    position: absolute;
+}
+
+.icon-sort span:before, .icon-sort span:after {
     content: '';
     width: 0;
     height: 0;
@@ -72,14 +82,14 @@ input[type="text"], select{
     border-right: 4px solid transparent;
 }
 
-.icon-sort:before {border-bottom: 6px solid silver; bottom: 2px;}
-.icon-sort:after {border-top: 6px solid silver; top: 2px;}
+.icon-sort span:before {border-bottom: 6px solid silver; bottom: 2px;}
+.icon-sort span:after {border-top: 6px solid silver; top: 2px;}
 
-*[data-table-sort]{cursor: pointer;}
-.sort-primary-desc,.sort-primary-asce {background-color: blueviolet; color: white;}
-.sort-primary-asce .icon-sort:before {border-bottom-color: white; bottom: 0px;}
-.sort-primary-desc .icon-sort:after {border-top-color: white; top: 0px;}
+.sort-primary-desc, .sort-primary-asce {background-color: blueviolet !important; color: white;}
+.sort-primary-asce .icon-sort span:before {border-bottom-color: white; bottom: 0px;}
+.sort-primary-desc .icon-sort span:after {border-top-color: white; top: 0px;}
 
-.sort-primary-asce .icon-sort:after,
-.sort-primary-desc .icon-sort:before {display: none}
+.sort-primary-asce .icon-sort span:after,
+.sort-primary-desc .icon-sort span:before {display: none}
 
+*[data-table-sort] {cursor: pointer; padding-right: 20px !important;}
