@@ -1,0 +1,61 @@
+/* Estilos específicos da página */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+body{
+    padding:50px; 
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos padrões do componente Carousel */
+
+/* Zoom de produto */
+
+.zoom-content{
+    width: 420px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.zoom-content img{
+	width: 100%;
+	height: auto;
+}
+
+.zoom-gallery{
+	float: left;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.zoom-gallery img{
+    width: 96px;
+    height:auto;
+    margin-right:12px;
+    float:left;
+    cursor:pointer;
+    box-shadow: 0 0 0 1px #e1e1e1;
+}
+
+.zoom-gallery img:last-child{margin-right:0}
+
+.img-zoom{
+	display: block;
+	transition: all 0.25s ease-out;
+}
+
+.wrap-zoom{
+	overflow: hidden;
+	position: relative;
+	cursor: move;
+	box-shadow: 0 0 0 1px #e1e1e1;
+}
