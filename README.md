@@ -19,5 +19,6 @@
   <li>Tootip</li>
   <li>Carousel</li>
   <li>Popup</li>
+  <li>Sort Table</li>
   <li>Filter Table</li>
 </ol>
