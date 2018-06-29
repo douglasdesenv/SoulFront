@@ -55,9 +55,7 @@ input[type="text"], select{
 
 /* Estilos padrões do componente table */
 
-.checkbox-group{
-    position: relative;
-}
+table, .checkbox-group{position: relative;}
 
 .select-style{
     height: 24px;
@@ -87,3 +85,13 @@ input[type="text"], select{
 }
 
 .checkbox-list label{padding: 4px;}
+
+.tbl-empty{
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    padding: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    color: #777;
+}

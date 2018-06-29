@@ -21,10 +21,10 @@ const modTabela = (function(){
         const   colTotal = $('[data-table-col="total"]');
 
         if (colTotal.length > 0){
-            let total = 0;
             colTotal.each(function(){ 
+                let total = 0;
                 localizarCol($(this)).each(function(){
-                    total = total + parseFloat($(this).text().replace(",", "."));
+                    total = total + parseFloat($(this).text().replace('.', '').replace(',', '.'));
                 });
                 $(this).closest('table').find('tfoot td:nth-child('+ (this.cellIndex + 1) +')').text(total.toFixed(2).replace(".", ","));
             });

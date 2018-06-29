@@ -22,7 +22,9 @@
             } else{
 
                 let textosColuna = $.unique(modTabela.localizarCol(filtro).map(function(){
-                    return $(this).text();
+                    if ($(this).text() != ''){
+                        return $(this).text();
+                    }
                 })).get();
 
                 if (filtro.prop('type') == 'select-one'){
@@ -37,28 +39,28 @@
                 } else {
                     if (filtro.hasClass('checkbox-group')){                                
                        
-                            const checkboxList = filtro.children('.checkbox-list');
-                            
-                            $('.select-style').off('click').on('click', function(e){
-                                if (checkboxList.is(':hidden')) {
-                                    checkboxList.css('display','grid');
-                                    $(document).off('click').on('click', function(e){
-                                        if ((checkboxList.is(':visible')) && ($(e.target).closest('.checkbox-group').length == 0)) {
-                                            checkboxList.hide();
-                                        }
-                                    });
-                                } else {
-                                    checkboxList.hide();
-                                }
-                            });
+                        const checkboxList = filtro.children('.checkbox-list');
+                        
+                        $('.select-style').off('click').on('click', function(e){
+                            if (checkboxList.is(':hidden')) {
+                                checkboxList.css('display','grid');
+                                $(document).off('click').on('click', function(e){
+                                    if ((checkboxList.is(':visible')) && ($(e.target).closest('.checkbox-group').length == 0)) {
+                                        checkboxList.hide();
+                                    }
+                                });
+                            } else {
+                                checkboxList.hide();
+                            }
+                        });
 
-                           checkboxList.parent(':not(.filtered)').children(checkboxList).empty();
+                        checkboxList.parent(':not(.filtered)').children(checkboxList).empty();
 
-                            textosColuna.map(function(el){
-                                checkboxList.append('<input id="id'+ el +'" type="checkbox"><label for="id'+ el + '">' + el + '</label>');
-                            });
+                        textosColuna.map(function(el){
+                            checkboxList.append('<input id="id'+ el +'" type="checkbox"><label for="id'+ el + '">' + el + '</label>');
+                        });
 
-                            checkboxList.off().on('change', verificarFiltros);
+                        checkboxList.off().on('change', verificarFiltros);
                     };
                 }
             }          
@@ -104,9 +106,14 @@
             }
             modTabela.localizarCol(filtro).filter(filtros).parent('tr').hide();
         });
-
-        tabela.each(criarFiltros);
-        modTabela.carregaTabela();
+        
+        if (tabela.find('tbody tr:visible').length <= 0){
+            tabela.append('<div class="tbl-empty">Nenhum resultado encontrado.</>').find('tfoot').hide();
+        } else{
+            tabela.each(criarFiltros).find('tfoot').show();
+            $('.tbl-empty').remove();
+            modTabela.carregaTabela();
+        }    
     }
 
 })(modTabela);
