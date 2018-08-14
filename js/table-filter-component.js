@@ -96,15 +96,25 @@
 
         $('.filtered').each(function(){
             const filtro = $(this);
-            let filtros = '';
+            var filtros = [];
             if (filtro.children('.checkbox-list').length > 0){
                 filtro.find('input[type="checkbox"]:checked').each(function(){
-                    filtros +=  ':not(:contains("' + this.nextSibling.innerText + '"))';
+                    filtros.push(this.nextSibling.innerText );
                 });
             } else {
-                filtros =  ':not(:contains(' + filtro.val() + '))';  
+                filtros.push(filtro.val());  
             }
-            modTabela.localizarCol(filtro).filter(filtros).parent('tr').hide();
+
+            modTabela.localizarCol(filtro).filter(function() {
+                var textCell = $(this).text();
+                var termosEncontrados = filtros.filter(function(termoFiltrado){
+                    var reg = new RegExp(termoFiltrado, "i");
+                    return reg.test(textCell);
+                });
+                return termosEncontrados.length == 0;
+            }).parent('tr').hide();
+
+            //modTabela.localizarCol(filtro).filter(filtros).parent('tr').hide();
         });
         
         if (tabela.find('tbody tr:visible').length <= 0){
