@@ -108,13 +108,11 @@
             modTabela.localizarCol(filtro).filter(function() {
                 var textCell = $(this).text();
                 var termosEncontrados = filtros.filter(function(termoFiltrado){
-                    var reg = new RegExp(termoFiltrado, "i");
+                    var reg = new RegExp(termoFiltrado.trim(), "i");
                     return reg.test(textCell);
                 });
                 return termosEncontrados.length == 0;
             }).parent('tr').hide();
-
-            //modTabela.localizarCol(filtro).filter(filtros).parent('tr').hide();
         });
         
         if (tabela.find('tbody tr:visible').length <= 0){

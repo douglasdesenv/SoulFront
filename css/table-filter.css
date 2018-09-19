@@ -82,6 +82,7 @@ table, .checkbox-group{position: relative;}
     font-family: arial;
     font-size: 13.33px;
     color: #000;
+    z-index: 1;
 }
 
 .checkbox-list label{padding: 4px;}
