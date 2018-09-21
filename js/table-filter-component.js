@@ -41,7 +41,7 @@
                        
                         const checkboxList = filtro.children('.checkbox-list');
                         
-                        $('.select-style').off('click').on('click', function(e){
+                        $('.select-style').off('click').on('click', function(){
                             if (checkboxList.is(':hidden')) {
                                 checkboxList.css('display','grid');
                                 $(document).off('click').on('click', function(e){
