@@ -9,25 +9,23 @@
 </head>
 <body>
     <h2>Resultado da Cãopetição</h2>
-    <table>
+    <div class="content-btn">
+        <div class="column-choice-group">
+            <a role="button" class="btn-column" data-table-custom=".tbl-competition">Colunas</a>
+            <div class="menu-column">
+            </div>
+        </div>
+    </div>
+    <table class="tbl-competition" data-table-custom-fixed>
         <thead>
             <tr>
-                <th colspan="9">
-                    <div class="column-choice-group">
-                        <a role="button" class="btn-column" data-table-custom>Colunas</a>
-                        <div class="menu-column">
-                        </div>
-                    </div>
-                </th>
-            </tr>
-            <tr class="title-row">
-                <th data-table-col="index">Índice</th>
-                <th>Inscrição</th>
-                <th>Nome</th>
+                <th data-table-col="index" data-table-custom-col="desindexed">Índice</th>
+                <th data-table-custom-col="desindexed">Inscrição</th>
+                <th data-table-custom-col="desindexed">Nome</th>
                 <th>Grupo</th>
                 <th>Raça</th>
                 <th>Porte</th>
-                <th>Origem</th>
+                <th data-table-custom-col="hidden">Origem</th>
                 <th>Colocação</th>
                 <th data-table-col="total">Prêmio</th>
             </tr>
