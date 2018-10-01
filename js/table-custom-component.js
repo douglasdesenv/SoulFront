@@ -34,7 +34,7 @@
             }
         });
 
-        if (table.data('data-table-custom-fixed')) {
+        if (table.is('[data-table-custom-fixed]')) {
             table.css('width', table.outerWidth());
         };
 
