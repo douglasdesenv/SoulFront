@@ -22,4 +22,5 @@
   <li>Zoom Gallery</li>
   <li>Sort Table</li>
   <li>Filter Table</li>
+  <li>Custom Table</li>
 </ol>
