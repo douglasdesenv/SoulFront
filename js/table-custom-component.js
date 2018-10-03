@@ -26,7 +26,7 @@
             const checkBox = $("#id" + $this.text());
             
             checkBox.on("change", function() { 
-                $this.closest('table').find('td:nth-child('+ ($this[0].cellIndex + 1) +'), th:nth-child('+ ($this[0].cellIndex + 1) +')').toggle(); 
+                $this.closest('table').find('td:nth-child('+ ($this[0].cellIndex + 1) +'), th:nth-child('+ ($this[0].cellIndex + 1) +')').toggle();      
             }); 
 
             if ($this.data('table-custom-col') === 'hidden'){
@@ -35,7 +35,7 @@
         });
 
         if (table.is('[data-table-custom-fixed]')) {
-            table.css('width', table.outerWidth());
+            table.css('min-width', table.outerWidth());
         };
 
         $('.btn-column').off('click').on('click', function(){
