@@ -1,0 +1,50 @@
+/* Estilos específicos da página */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    padding:50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2{
+    margin-bottom: 30px;
+    color: blueviolet;
+}
+
+table, td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+td:nth-child(1),
+td:nth-child(8){text-align: center}
+td:nth-child(9){text-align: right}
+
+th {
+    border-right: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 4px 8px;
+    position: relative;
+}
+
+table th, table tfoot td{
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+    color: #444;
+}
+
+
+/* Estilos padrões do componente table-custom */
