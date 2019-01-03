@@ -19,14 +19,15 @@
                 
 
         titleRow.each(function(){
-            const $this = $(this);
+            const $this = $(this),
+            index = $this[0].cellIndex + 1;
             
-            $('.menu-column').append('<input id="id'+ $this.text() +'" type="checkbox" checked><label for="id'+ $this.text() + '">' + $this.text() + '</label>');
+            $('.menu-column').append('<input id="idColumn'+ index +'" type="checkbox" checked><label for="idColumn'+ index + '">' + $this.text() + '</label>');
             
-            const checkBox = $("#id" + $this.text());
+            const checkBox = $("#idColumn" + index);
             
             checkBox.on("change", function() { 
-                $this.closest('table').find('td:nth-child('+ ($this[0].cellIndex + 1) +'), th:nth-child('+ ($this[0].cellIndex + 1) +')').toggle();      
+                $this.closest('table').find('td:nth-child('+ index +'), th:nth-child('+ index +')').toggle();      
             }); 
 
             if ($this.data('table-custom-col') === 'hidden'){

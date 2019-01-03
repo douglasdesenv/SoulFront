@@ -25,7 +25,7 @@
                     if ($(this).text() != ''){
                         return $(this).text();
                     }
-                })).get();
+                }).sort()).get();
 
                 if (filtro.prop('type') == 'select-one'){
                     
