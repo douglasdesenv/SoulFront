@@ -39,9 +39,8 @@ h2{
     margin-bottom: 5px
 }
 
-.accordion-title{
-    background-color: #eee;
-}
+.accordion-title{background-color: #eee;}
+.accordion-title:hover{background-color: #ddd;}
 
 /* Estilos padrões do componente Accordion */
 
@@ -72,9 +71,4 @@ h2{
     width: 100%;
     padding: 30px;
     display: none;
-}
-
-.info-logging{
-    color: #888;
-    margin-left: auto;
 }
