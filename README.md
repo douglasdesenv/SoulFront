@@ -23,4 +23,5 @@
   <li>Sort Table</li>
   <li>Filter Table</li>
   <li>Custom Table</li>
+  <li>Accordion</li>
 </ol>
