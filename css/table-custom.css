@@ -10,8 +10,9 @@
 }
 
 body{
+    width: 960px;
+    margin: 40px auto;
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    padding:50px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +48,7 @@ table th, table tfoot td{
 }
 
 .content-btn{
-    width: 678px;
+    width: 100%;
     margin-bottom: 10px;
 }
 

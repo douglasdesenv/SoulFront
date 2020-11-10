@@ -30,7 +30,7 @@
                 if (filtro.prop('type') == 'select-one'){
                     
                     filtro.off().on('change', verificarFiltros);
-                    filtro.empty().append("<option value='Todos'>Todos</option>");
+                    filtro.empty().append("<option value='Todos'>All</option>");
                     
                     textosColuna.map(function(el){
                         filtro.append("<option value='" + el + "'>" + el + "</option>");
