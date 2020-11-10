@@ -16,10 +16,23 @@
         slide.first().addClass('active');
         el.wrapInner('<div class="wrap-carousel"></div>');
         
+        // criarBanners(el);
         criarNavBotoes(el, slide);
         criarNavSetas(el);
         autoPlay(el);
     }
+
+    // function criarBanners(el){
+    //     const razao = 2000/700;
+    //     el.find('img').css({
+    //         'width': el.width()
+    //     });
+    //     el.css('height', ($(document).width()/razao))
+    // }
+
+    // $(window).resize(function() {
+    //     criarBanners($('.carousel'));
+    // });
 
     function autoPlay(el) {
         let autoplay = 0;

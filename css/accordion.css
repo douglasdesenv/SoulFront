@@ -1,0 +1,80 @@
+/* Estilos específicos da página */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+body{
+    width: 960px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    padding:50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2{
+    color: #673AB7;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.accordion{
+    width: 100%;
+    float: left;
+    border: 1px solid #bbb;
+}
+
+.accordion-group{
+    background-color: #fff;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px
+}
+
+.accordion-title{
+    background-color: #eee;
+}
+
+/* Estilos padrões do componente Accordion */
+
+.accordion-title{
+    float: left;
+    width: 100%;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.accordion-title:after{
+    content: "▸";
+    font-size: 2em;
+    line-height: 0em;
+    margin-left: auto;
+}
+
+.accordion-title.arrow-down:after,
+.arrow-down-ms:after{
+    transform: rotate(90deg)
+}
+
+.accordion-content{
+    float: left;
+    width: 100%;
+    padding: 30px;
+    display: none;
+}
+
+.info-logging{
+    color: #888;
+    margin-left: auto;
+}
